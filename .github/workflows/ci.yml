@@ -18,7 +18,15 @@ jobs:
 
       - name: Validate Conventional Commit
         run: |
-          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")   
+
+          # Ignore format from system and automatic commits
+          if [[ "$COMMIT_MSG" =~ ^Merge || "$COMMIT_MSG" =~ ^Revert || "$COMMIT_MSG" =~ ^Auto\ merge || "$COMMIT_MSG" =~ ^Update || "$COMMIT_MSG" =~ Merge\ .*into\ .* ]]; then
+            echo "Commit automatico o de sistema detectado ('$COMMIT_MSG'). Omitiendo validacion."
+            exit 0
+          fi
+
+          # Validate format for manual commits from developers
           REGEX="^(feat|fix|docs|refactor|chore|style|test|perf|ci|build|revert)(\(.+\))?: .+"
           if [[ ! $COMMIT_MSG =~ $REGEX ]]; then
             echo "Error: Commit'$COMMIT_MSG' doesn't follow the convention (feat, fix, docs, refactor, chore, test...)."
