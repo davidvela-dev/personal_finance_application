@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'constants/routes.dart';
+
+import 'views/login.dart';
+import 'views/register.dart';
+import 'views/edit.dart';
+import 'views/alerts.dart';
+import 'views/categories.dart';
+import 'views/statements.dart';
+
+import 'views/views_layout.dart'; // imports home, movements, budgets and reports screen
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,6 +18,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Scaffold());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      initialRoute: Routes.home,
+
+      // dictionary of named routes
+      routes: {
+        Routes.login: (context) => const LoginView(),
+        Routes.register: (context) => const RegisterView(),
+
+        // screens of same layout with different index as parameter
+        Routes.home: (context) => const ViewsLayout(initialIndex: 0),
+        Routes.movements: (context) => const ViewsLayout(initialIndex: 1),
+        Routes.budgets: (context) => const ViewsLayout(initialIndex: 2),
+        Routes.reports: (context) => const ViewsLayout(initialIndex: 3),
+
+        Routes.edit: (context) => const EditView(),
+        Routes.alerts: (context) => const AlertsView(),
+        Routes.categories: (context) => const CategoriesView(),
+        Routes.statements: (context) => const StatementsView(),
+      },
+    );
   }
 }
