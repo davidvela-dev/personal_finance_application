@@ -45,8 +45,8 @@ A cross-platform mobile application designed to help track, organize, and visual
 ### 1.2- Screens
 
 1. **Home:** Monthly general balance, income/expense summary, and quick access to recent transactions
-2. **Transactions:** Filtered history tabs with support for editing or deleting
-3. **New Transaction / Edit:** interface for quick entry of amounts, category selection, and notes of transactions
+2. **Movements:** Filtered history tabs with support for editing or deleting
+3. **New Movement / Edit:** interface for quick entry of amounts, category selection, and notes of transactions
 4. **Budgets:** Visualization of total monthly limit, progress bars per category, and remaining days in the cycle
 5. **Reports:** Expense distribution chart, monthly evolution, and percentage comparison against the previous month
 6. **Alerts & Preferences:** Local notification center and setup for alert thresholds and daily reminders
@@ -55,7 +55,7 @@ A cross-platform mobile application designed to help track, organize, and visual
 
 ### 1.3- Screenshots
 
-|     Home     | Transactions |  New / Edit  |    Budgets   |
+|     Home     |  Movements   |     Edit     |    Budgets   |
 | :----------: | :----------: | :----------: | :----------: |
 ||||
 

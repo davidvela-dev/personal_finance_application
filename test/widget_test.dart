@@ -8,7 +8,7 @@ void main() {
     // build our app and trigger a frame
     await tester.pumpWidget(const MyApp());
 
-    // verify empty Scaffold
-    expect(find.byType(Scaffold), findsOneWidget);
+    // verify material app
+    expect(find.byType(MaterialApp), findsOneWidget);
   });
 }
