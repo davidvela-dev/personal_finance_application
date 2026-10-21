@@ -1,0 +1,22 @@
+name: personal_finance_application # unique name for application package
+description: "A cross-platform mobile application designed to help track, organize, and visualize daily income and expenses intuitively and without needing an internet connection."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.0
+
+dependencies: # application dependencies
+  flutter: 
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies: # development dependencies
+  flutter_test: # unit tests
+    sdk: flutter
+
+  flutter_lints: ^6.0.0 # static tests
+
+flutter:
+  uses-material-design: true # material library design
