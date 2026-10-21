@@ -6,15 +6,26 @@ import 'movements.dart';
 import 'budgets.dart';
 import 'reports.dart';
 
-class LayoutView extends StatefulWidget {
-  const LayoutView({super.key});
+class ViewsLayout extends StatefulWidget {
+  final int initialIndex; // save initial screen
+
+  const ViewsLayout({
+    super.key,
+    this.initialIndex = 0,
+  }); // constructor to be called with parameter index
 
   @override
-  State<LayoutView> createState() => _LayoutViewState();
+  State<ViewsLayout> createState() => _ViewsLayoutState();
 }
 
-class _LayoutViewState extends State<LayoutView> {
-  int _currentIndex = 0;
+class _ViewsLayoutState extends State<ViewsLayout> {
+  late int _currentIndex; // initialized when view is loaded
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.initialIndex; // index asigned to route
+  }
 
   // screens list with indexes
   final List<Widget> _pantallas = const [
@@ -37,21 +48,15 @@ class _LayoutViewState extends State<LayoutView> {
         type: BottomNavigationBarType
             .fixed, // show all menu elements without hiding
         currentIndex: _currentIndex, // private variable for current index
-        selectedItemColor:
-            Colors.black, // black color for selected elements
-        unselectedItemColor:
-            Colors.grey, // gray color for unselected elements
-
+        selectedItemColor: Colors.black, // black color for selected elements
+        unselectedItemColor: Colors.grey, // gray color for unselected elements
         // hide labels
         showUnselectedLabels: false,
-        showSelectedLabels: false, 
+        showSelectedLabels: false,
 
         // icons list
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt_long_outlined),
             label: 'Movements',

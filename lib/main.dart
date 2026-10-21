@@ -28,7 +28,11 @@ class MyApp extends StatelessWidget {
         Routes.login: (context) => const LoginView(),
         Routes.register: (context) => const RegisterView(),
 
-        Routes.home: (context) => const LayoutView(), // loads 4 dinamic screens with bottom nav bar
+        // screens of same layout with different index as parameter
+        Routes.home: (context) => const ViewsLayout(initialIndex: 0),
+        Routes.movements: (context) => const ViewsLayout(initialIndex: 1),
+        Routes.budgets: (context) => const ViewsLayout(initialIndex: 2),
+        Routes.reports: (context) => const ViewsLayout(initialIndex: 3),
 
         Routes.edit: (context) => const EditView(),
         Routes.alerts: (context) => const AlertsView(),
