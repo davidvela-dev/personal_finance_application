@@ -6,6 +6,9 @@ on: # execution with push and pull of main
   pull_request:
     branches: [ "main" ]
 
+permissions: # read only for execution of this workflow
+  contents: read
+
 jobs:
   build_and_test: # vm for testing
     runs-on: ubuntu-latest
@@ -48,4 +51,4 @@ jobs:
         run: flutter analyze 
 
       - name: Execute Unit Tests
-        run: flutter test 
+        run: flutter test
