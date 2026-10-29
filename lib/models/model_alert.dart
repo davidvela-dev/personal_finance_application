@@ -1,10 +1,10 @@
-class AlertData {
+class ModelAlert {
   final String title;
   final String description;
   final DateTime date;
   final String categoryId;
 
-  AlertData({
+  ModelAlert({
     required this.title,
     required this.description,
     required this.date,
