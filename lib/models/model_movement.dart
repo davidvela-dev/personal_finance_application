@@ -1,10 +1,10 @@
-class Movement {
+class ModelMovement {
   final String title;
   final String categoryId;
   final DateTime date;
   final String amount;
 
-  Movement({
+  ModelMovement({
     required this.title,
     required this.categoryId,
     required this.date,

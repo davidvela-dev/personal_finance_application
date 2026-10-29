@@ -3,35 +3,46 @@ import 'package:flutter/material.dart';
 import '../models/model_category.dart';
 
 class CategoryProvider extends ChangeNotifier {
-  final List<Category> _categories = []; // list to storage new categories
+  // hardcoded categories
+  final List<ModelCategory> _categories = [
+    ModelCategory(
+      id: 'category_1',
+      name: 'Food',
+      description: 'Restaurants or food delivery expenses',
+      icon: Icons.fastfood,
+      color: Colors.orange,
+    ),
+    ModelCategory(
+      id: 'category_2',
+      name: 'Transport',
+      description: 'Gas or PT expenses',
+      icon: Icons.directions_car,
+      color: Colors.blue,
+    ),
+  ];
 
-  // getter for widgets to obtain categories
-  List<Category> get categories => _categories;
+  //
+  List<ModelCategory> get categories => _categories;
 
-  // receive new category and update widgets
-  void addCategory(Category category) {
-    _categories.add(category); // add category to list
+  void addCategory(ModelCategory category) {
+    _categories.add(category);
     notifyListeners();
   }
 
-  // receive new data from category
-  void updateCategory(Category updatedCategory) {
-    final index = _categories.indexWhere(
-      (cat) => cat.id == updatedCategory.id,
-    ); // found index of category
+  void updateCategory(ModelCategory updatedCategory) {
+    final index = _categories.indexWhere((cat) => cat.id == updatedCategory.id);
     if (index != -1) {
-      // if id was found
-      _categories[index] =
-          updatedCategory; // change old category with new one with updated data
-      notifyListeners(); // update widgets
+      _categories[index] = updatedCategory;
+      notifyListeners();
     }
   }
 
-  // remove category
   void removeCategory(String id) {
-    _categories.removeWhere(
-      (cat) => cat.id == id,
-    ); // found category by id and delete
+    _categories.removeWhere((cat) => cat.id == id);
     notifyListeners();
+  }
+
+  ModelCategory? getCategoryById(String id) {
+    return _categories.where((cat) => cat.id == id).firstOrNull;
   }
 }
