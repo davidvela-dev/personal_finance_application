@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+
+import 'auth_gate.dart'; // manager of auth
 import 'constants/routes.dart';
 
-import 'viewmodels/provider_category.dart';
+import 'viewmodels/provider_category.dart'; // provider for widgets available to all screens
 
 import 'views/login.dart';
 import 'views/register.dart';
@@ -14,8 +19,13 @@ import 'views/statements.dart';
 
 import 'views/views_layout.dart'; // imports home, movements, budgets and reports screen
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // ensure inicialization of bindings before executing code
+
+  // initialize firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  runApp(const MyApp()); // index root widget MyApp to the visual interface
 }
 
 class MyApp extends StatelessWidget {
@@ -31,8 +41,7 @@ class MyApp extends StatelessWidget {
         // base widget with routes and services
         debugShowCheckedModeBanner: false,
 
-        initialRoute: Routes.home,
-
+        home: const AuthGate(), // authgate decides between login and home
         // dictionary of named routes
         routes: {
           Routes.login: (context) => const LoginView(),
