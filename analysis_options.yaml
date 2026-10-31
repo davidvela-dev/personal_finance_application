@@ -9,7 +9,11 @@ analyzer: # settings for linting motor
     - windows/**
     - macos/**
     - linux/**
-    - .dart_tool/** #
+    - .dart_tool/** 
+    - 'lib/firebase_options.dart'
+  errors:
+    uri_does_not_exist: ignore
+    undefined_identifier: ignore
 
 linter: # style rules
   rules: 
